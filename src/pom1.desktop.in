@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=@PACKAGE_NAME@
+Exec=pom1
+Icon=pom1
+Type=Application
+Comment=@PACKAGE_SHORTDESC@
+Categories=Emulator;

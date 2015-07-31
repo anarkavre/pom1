@@ -1,0 +1,36 @@
+Sat Mar 03 12:21:45 EST 2012 jdcorrado
+
+  v1.0.0
+  Optimized options code and added better error handling.
+  Load option now has option to simulate keyboard input for ASCII format.
+  Added show about option.
+  Added command line parameters.
+
+Mon Aug 16 16:06:48 EST 2010 jdcorrado
+
+  v0.0.5
+  Added mutexes to protect access to screen and to lock/unlock blinking cursor.
+
+Sat Aug 14 22:49:55 EST 2010 jdcorrado
+
+  v0.0.4
+  Fixed input and output of valid characters.
+  Added optional cursor (block or @) and blinking.
+
+Tue May 15 19:40:03 EST 2007 jdcorrado
+
+  v0.0.3
+  Fixed problems with certain addressing modes where zero page would not wrap around.
+
+Tue Feb 27 20:49:21 EST 2007 jdcorrado
+
+  v0.0.2
+  Fixed problems from signed types.
+  Moved updateScreen call.
+  Set BRK flag instead of IRQ flag in BRK function (Thanks Kallikak).
+  Other minor code changes.
+
+Fri Sep 29 23:01:37 EST 2006 jdcorrado
+
+  v0.0.1
+

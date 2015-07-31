@@ -1,0 +1,7 @@
+Makefile
+Makefile.in
+pom1
+pom1-1.0.0
+pom1.desktop
+.deps
+*.o

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+export POM1ROMDIR="@prefix@/share/@PACKAGE@/roms"
+
+pom1-@PACKAGE_VERSION@ $@
