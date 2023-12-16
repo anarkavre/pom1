@@ -98,6 +98,8 @@ void loadConfiguration(void)
 				setBlinkCursor(value[0] & 0x01);
 			else if (!strcmp(buffer, "blockCursor"))
 				setBlockCursor(value[0] & 0x01);
+			else if (!strcmp(buffer, "krusaderRom"))
+			  setKrusaderRom((value[0] & 0x01));
 		}
 
 		fclose(fp);
@@ -177,6 +179,12 @@ void saveConfiguration(void)
 
 		strcpy(buffer, "blockCursor=");
 		buffer[12] = getBlockCursor() | 0x30;
+		buffer[13] = '\n';
+		buffer[14] = '\0';
+		fputs(buffer, fp);
+
+		strcpy(buffer, "krusaderRom=");
+		buffer[12] = getKrusaderRom() | 0x30;
 		buffer[13] = '\n';
 		buffer[14] = '\0';
 		fputs(buffer, fp);

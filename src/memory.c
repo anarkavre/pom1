@@ -21,9 +21,12 @@
 #include <string.h>
 #include "configuration.h"
 #include "pia6820.h"
+#include "memory.h"
 
-static unsigned char mem[65536];
-static int ram8k = 0, writeInRom = 1;
+static unsigned char mem[0x10000]; // 64K
+static int ram8k = 0;
+static int writeInRom = 1;
+static int krusaderRom = 0;
 
 static int loadMonitor(void)
 {
@@ -40,7 +43,7 @@ static int loadMonitor(void)
 
 	if (fp)
 	{
-		fread(&mem[0xFF00], 1, 256, fp);
+		fread(&mem[0xFF00], 1, 0x100, fp);
 		fclose(fp);
 	}
 	else
@@ -64,7 +67,7 @@ static int loadBasic(void)
 
 	if (fp)
 	{
-		fread(&mem[0xE000], 1, 4096, fp);
+		fread(&mem[0xE000], 1, 0x1000, fp);
 		fclose(fp);
 	}
 	else
@@ -73,22 +76,61 @@ static int loadBasic(void)
 	return 1;
 }
 
+static int loadKrusader() {
+  const char *romdir = getRomDirectory();
+  char *filename;
+  FILE *fp;
+  
+  filename = (char *)malloc(strlen(romdir) + 14);
+  sprintf(filename, "%s/krusader.rom", romdir);
+
+  fp = fopen(filename, "rb");
+
+  free(filename);
+
+  if (fp) {
+    fread(&mem[0xE000], 1, 0x2000, fp);
+    fclose(fp);
+  }
+  else {
+    return 0;
+  }
+
+  return 1;
+}
+
+static void loadRoms() {
+  if (krusaderRom) {
+    if (!loadKrusader()) {
+      fprintf(stderr, "stderr: Could not load krusader\n");
+      exit(1);
+    }
+  }
+  else {
+    if (!loadMonitor()) {
+      fprintf(stderr, "stderr: Could not load monitor\n");
+      exit(1);
+    }
+
+    if (!loadBasic()) {
+      fprintf(stderr, "stderr: Could not load basic\n");
+      exit(1);
+    }
+  }
+}
+
+int getKrusaderRom() {
+  return krusaderRom;
+}
+
+void setKrusaderRom(int b) {
+  krusaderRom = b;
+}
 
 void resetMemory(void)
 {
-	memset(mem, 0, 57344);
-	
-	if (!loadMonitor())
-	{
-		fprintf(stderr, "stderr: Could not load monitor\n");
-		exit(1);
-	}
-
-	if (!loadBasic())
-	{
-		fprintf(stderr, "stderr: Could not load basic\n");
-		exit(1);
-	}
+	memset(mem, 0, 0xE000);
+	loadRoms();
 }
 
 void setRam8k(int b)

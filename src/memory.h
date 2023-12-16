@@ -19,6 +19,8 @@
 #ifndef __MEMORY_H__
 #define __MEMORY_H__
 
+int getKrusaderRom();
+void setKrusaderRom(int b);
 void resetMemory(void);
 void setRam8k(int b);
 int getRam8k(void);

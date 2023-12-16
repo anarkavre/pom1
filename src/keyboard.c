@@ -192,6 +192,11 @@ int handleInput(void)
 				showAbout();
 				return 1;
 			}
+			else if (event.key.keysym.sym == SDLK_k) {
+			  setKrusaderRom(!getKrusaderRom());
+			  printf("stdout: krusaderRom=%d\n", getKrusaderRom());
+			  return 1;
+			}
 		}
 
 		if (readKbdCr() == 0x27 && !_fp && event.type == SDL_KEYDOWN && !(event.key.keysym.unicode & 0xFF80) && event.key.keysym.unicode)
