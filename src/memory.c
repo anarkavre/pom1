@@ -127,10 +127,9 @@ void setKrusaderRom(int b) {
   krusaderRom = b;
 }
 
-void resetMemory(void)
-{
-	memset(mem, 0, 0xE000);
-	loadRoms();
+void resetMemory(void) {
+  memset(mem, 0, 0xFFFF);
+  loadRoms();
 }
 
 void setRam8k(int b)
