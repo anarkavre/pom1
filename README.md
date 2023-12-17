@@ -27,9 +27,27 @@ command line parameters.
 | Show About          | A      |                    | Show version and copyright information.        |
 | Toggle Krusader ROM | K      | -krusaderRom       | Toggle between Krusader and BASIC/Monitor ROMs |
 
-Before exiting, Pom1 writes its configuration options to `$HOME/.pom1/pom1.cfg`
+Before exiting, Pom1 writes its configuration options to
+`$HOME/.pom1/pom1.cfg`; you can modify options directly in this file as well.
+
+Building
+===
+
+Generate the `configure` script:
+
+	$ libtoolize --force
+	$ aclocal
+	$ autoheader
+	$ automake --force-missing --add-missing
+	$ autoconf
+
+After that's it's just the usual:
+
+	$ ./configure
+	$ make
+	$ make install
 
 Other information
 ===
 
-- You can find more information about the project at the Pom1 website: http://pom1.sourceforge.net/
+You can find more information about the project at the Pom1 website: http://pom1.sourceforge.net/
