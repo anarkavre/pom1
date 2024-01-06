@@ -1,3 +1,7 @@
+2023-12-17  Ralph Moeritz
+
+	* Added -krusaderRom option (Ctrl+K) to switch between Krusader and BASIC/Monitor ROMs.
+
 Sat Mar 03 12:21:45 EST 2012 jdcorrado
 
   v1.0.0

@@ -1,7 +1,8 @@
 ROMFILES =				\
 	basic.rom			\
 	charmap.rom			\
-	monitor.rom
+	monitor.rom			\
+	krusader.rom
 
 romdir = $(prefix)/share/@PACKAGE@/roms
 rom_DATA = $(ROMFILES)
