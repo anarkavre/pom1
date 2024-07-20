@@ -1,5 +1,6 @@
 AC_PREREQ([2.68])
 AC_INIT([Pom1 Apple 1 Emulator], [1.0.0], [jdcorrado@gmail.com], [pom1])
+AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([src/main.c])
 AC_CONFIG_HEADERS([config.h])
 

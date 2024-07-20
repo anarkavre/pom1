@@ -2,4 +2,7 @@
 
 export POM1ROMDIR="@prefix@/share/@PACKAGE@/roms"
 
-pom1-@PACKAGE_VERSION@ $@
+SCRIPT=$(readlink -f "$0")
+SCRIPTDIR=$(dirname "$SCRIPT")
+
+$SCRIPTDIR/pom1-@PACKAGE_VERSION@ $@

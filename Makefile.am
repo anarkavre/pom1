@@ -2,7 +2,7 @@ DOC_FILES =				\
 	AUTHORS				\
 	ChangeLog			\
 	NEWS				\
-	README
+	README.md
 
 EXTRA_DIST = $(DOC_FILES)
 

@@ -62,9 +62,10 @@ int main(int argc, char *argv[])
 					setPixelSize(temp);
 				}
 			}
-			else if (!strcasecmp("-scanlines", argv[i]))
+			else if (!strcasecmp("-scanlines", argv[i])) {
 				if (getPixelSize() > 1)
 					setScanlines(1);
+			}
 			else if (!strcasecmp("-terminalspeed", argv[i]) && i + 1 < argc)
 			{
 				temp = atoi(argv[i + 1]);
@@ -82,6 +83,8 @@ int main(int argc, char *argv[])
 				setBlinkCursor(1);
 			else if (!strcasecmp("-blockcursor", argv[i]))
 				setBlockCursor(1);
+			else if (!strcasecmp("-krusaderrom", argv[i]))
+			  setKrusaderRom(1);
 		}
 	}
 
